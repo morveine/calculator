@@ -12,7 +12,7 @@ del.addEventListener('click', clearScreen);
 dot.addEventListener('click', inputHandler);
 equals.addEventListener('click', operationHandler);
 digits.forEach(digit => digit.addEventListener('click', inputHandler));
-digits.forEach(digit => digit.addEventListener('click', operationHandler));
+operators.forEach(operator => operator.addEventListener('click', operationHandler));
 
 function clearScreen() {
     if (this.id === 'clear') {
