@@ -11,10 +11,8 @@ clear.addEventListener('click', clearScreen);
 del.addEventListener('click', clearScreen);
 dot.addEventListener('click', inputHandler);
 equals.addEventListener('click', operationHandler);
-digits.forEach(digit => digit.addEventListener('click', inputHandler))
-digits.forEach(digit => digit.addEventListener('click', operationHandler))
-
-
+digits.forEach(digit => digit.addEventListener('click', inputHandler));
+digits.forEach(digit => digit.addEventListener('click', operationHandler));
 
 function clearScreen() {
     if (this.id === 'clear') {
@@ -24,13 +22,14 @@ function clearScreen() {
     }
 }
 
-
 function inputHandler(event) {
     const buttonText = document.createTextNode(event.target.textContent); // gets the text content of the clicked button 
     if (event.target !== dot || !screen.textContent.includes('.')) {
-        if (screen.textContent.length >= 11) {
+        if (screen.textContent.length >= 11 && event.target.id !== '00') {
             screen.textContent = screen.textContent.slice(1);
-        };
+        } else if (screen.textContent.length >= 11 && event.target.id === '00') {
+            screen.textContent = screen.textContent.slice(2);
+        }
         screen.appendChild(buttonText);
     }
 
